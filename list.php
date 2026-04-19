@@ -1,14 +1,13 @@
 <?php
 $file = 'tasks.json';
 
-// 1. Load tasks and ensure we have an array
+
 $json_data = file_exists($file) ? file_get_contents($file) : '';
 $tasks = json_decode($json_data, true);
 if (!is_array($tasks)) {
     $tasks = [];
 }
 
-// 2. Handle Adding a New Task
 if (isset($_POST['add_task']) && !empty(trim($_POST['task']))) {
     $tasks[] = ['text' => htmlspecialchars($_POST['task']), 'done' => false];
     file_put_contents($file, json_encode($tasks));
@@ -16,7 +15,7 @@ if (isset($_POST['add_task']) && !empty(trim($_POST['task']))) {
     exit;
 }
 
-// 3. Handle Toggling the Checkbox
+
 if (isset($_POST['update_index'])) {
     $index = $_POST['update_index'];
     $tasks[$index]['done'] = isset($_POST['done']);
@@ -25,7 +24,7 @@ if (isset($_POST['update_index'])) {
     exit;
 }
 
-// 4. Handle Deleting a Task
+
 if (isset($_GET['delete'])) {
     $index = $_GET['delete'];
     if (isset($tasks[$index])) {
@@ -59,8 +58,8 @@ if (isset($_GET['delete'])) {
         }
         
         .container { 
-            width: 800px; /* <--- CHANGED THIS TO BE WIDER */
-            max-width: 95%; /* Ensures it doesn't overflow on small screens */
+            width: 800px; 
+            max-width: 95%;
             height: 600px; 
             background: rgb(255, 255, 243); 
             padding: 2.5rem; 
@@ -93,7 +92,7 @@ if (isset($_GET['delete'])) {
         .delete-btn { color: #c1429d; text-decoration: none; font-weight: bold; font-size: 18px; padding: 5px 10px; }
         .delete-btn:hover { background: #fff5f5; border-radius: 50%; }
 
-        /* LOGOUT BUTTON - Pinned to bottom right */
+        
         .logout-btn {
             position: absolute;
             right: 2.5rem;   
@@ -135,7 +134,7 @@ if (isset($_GET['delete'])) {
             <?php endforeach; ?>
         </ul>
 
-        <a href="welcome.php" class="logout-btn">Logout</a>
+        <a href="welcome.php" class="logout-btn">Logout</a> //redirect to welcome.php
     </div>
 
 </body>
