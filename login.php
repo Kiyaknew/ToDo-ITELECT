@@ -1,16 +1,20 @@
 <?php
 session_start();
 
+// 1. Initialize the variable so it always exists
+$error = ''; 
+
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $username = $_POST['username'];
     $password = $_POST['password'];
 
     // If credentials are correct
     if ($username === 'admin' && $password === 'password123') {
-        $_SESSION['loggedin'] = true; // This is the "key" to the app
+        $_SESSION['loggedin'] = true;
         header('Location: list.php');
         exit;
     } else {
+        // 2. Only fill it with a message if there's an actual error
         $error = 'Invalid username or password.';
     }
 }
