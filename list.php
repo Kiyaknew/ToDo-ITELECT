@@ -134,7 +134,7 @@ if (isset($_GET['delete'])) {
             <?php endforeach; ?>
         </ul>
 
-        <a href="welcome.php" class="logout-btn">Logout</a> //redirect to welcome.php
+        <a href="welcome.php" class="logout-btn">Logout</a> 
     </div>
 
 </body>
