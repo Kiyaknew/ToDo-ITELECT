@@ -1,5 +1,8 @@
 <?php
+<?php
 session_start();
-session_destroy();
+session_unset();    // Remove all session variables
+session_destroy();  // Destroy the session
 header('Location: welcome.php');
 exit;
+?>

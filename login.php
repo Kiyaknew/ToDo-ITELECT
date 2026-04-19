@@ -1,20 +1,13 @@
 <?php
 session_start();
 
-if (isset($_SESSION['loggedin']) && $_SESSION['loggedin'] === true) {
-    header('Location: list.php');
-    exit;
-}
-
-$error = '';
-
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $username = $_POST['username'];
     $password = $_POST['password'];
 
+    // If credentials are correct
     if ($username === 'admin' && $password === 'password123') {
-        $_SESSION['loggedin'] = true;
-        $_SESSION['username'] = $username;
+        $_SESSION['loggedin'] = true; // This is the "key" to the app
         header('Location: list.php');
         exit;
     } else {
